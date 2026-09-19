@@ -1,14 +1,101 @@
-# AlevelProject
-My Alevel Project that scored me 66/70 in OCR computer science. It's not perfect but I'm very proud of it - Technically overcomplicated for what I needed to do
+# 8 Bit Racer
 
-More so a passion project than specifcally for the NEA, as i went very overboard and dropped marks because my analysis section and testing section were not in depth enough. The code is all written by me, if you look closely you'll be able to tell this as some of it is shit. lol
+**8 Bit Racer** is a top-down racing game built in Python using Pygame.
 
-I learned how to use pygame and python more proficiently for this project as well as learning about system architecture, object oriented programming etc.
+I originally created the project independently as my A-Level Computer Science programming project. It took roughly **six months** to build and became a genuine passion project rather than just coursework. The final project received **66/70 marks**.
 
-This is a single player 2D racing game with a custom made simple AI opponent, simplified realistic(ish) acceleration models for the car, a custom track builder, player-track interactions. S JSON file system that stores player logins as dictionaries, hashing utilised in the data layer and salt's to store user passwords securely, each track is stored as a 2D array within a JSON file. The AI works essentially as a waypoint follower - these waypoints being established when the track is built.
+At the time, I was largely self-taught in Python and used the project to explore areas such as game development, persistent data, user authentication, AI behaviour, custom development tools and larger multi-file program design.
 
-Everything is handled locally and the project never had any intention of being officially published.
+## Features
 
-Like I said earlier it isn't perfect, some coupling between a few of the sub-systems and I didn't use get/set functions as I simply hadn't learned to do that yet. I have also the PDF file of my analysis, design, development, testing and conclusion to making this project and it took me over 6 months to complete. The game itself is pretty self explanatory i'm sure you'll be able to figure it out.
+The original project includes:
 
-run main.py and it should all open up. Thanks for reading.
+* Player accounts with hashed passwords
+* JSON-based user data and saved records
+* Multiple dynamically loaded tracks
+* Three-lap racing with checkpoints
+* AI-controlled opponents
+* Sound effects and music
+* Player settings
+* Track records
+* A custom track-building tool
+* AI waypoint generation for custom tracks
+
+Tracks are represented as **64 × 36 tile grids** stored in JSON, allowing the game to load different circuits without hard-coding each one.
+
+One of the main strengths of the project was its scope. Rather than building only a single race, I attempted to build a reusable game system with persistent users, configurable tracks, AI racers and tools for creating additional content.
+
+As an early self-taught project, it also has limitations. Some systems are more tightly coupled than I would design them today, error handling is relatively basic, and parts of the architecture developed organically as the project grew. The original version was also heavily designed around Windows.
+
+## AI-Assisted Recovery
+
+Several months after completing the project, I moved the surviving codebase to a new computer and discovered that the entire original `assets` and `data` directories had been lost.
+
+The Python source code and approximately **342 pages of original development documentation** survived.
+
+In 2026, I used OpenAI's ChatGPT to help reconstruct the missing runtime files by analysing my original source code and documentation.
+
+AI assistance was used to:
+
+* Recreate replacement graphics and audio
+* Reconstruct the expected JSON data structures
+* Create replacement playable tracks
+* Restore the user-data structure
+* Make file paths work across Windows and macOS
+* Add fallbacks for missing fonts and unavailable audio
+* Remove an unnecessary NumPy dependency
+* Fix an edge case in the original track-builder AI waypoint generation
+* Add basic verification and launch scripts
+
+The replacement assets and track layouts are **not the original files from my submitted project**.
+
+The game's original concept, design, architecture, systems and source code were created by me. AI was introduced only after completion to recover lost files and make the surviving project runnable again.
+
+**This README itself was also written with AI assistance.**
+
+## Running the Project
+
+Python 3 and Pygame are required.
+
+### Windows
+
+Open Command Prompt or PowerShell inside the project folder:
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+python -m pip install -r requirements.txt
+python run_game.py
+```
+
+### macOS
+
+Open Terminal inside the project folder:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+python run_game.py
+```
+
+You can optionally verify the reconstructed files first with:
+
+```bash
+python verify_recovery.py
+```
+
+### Demo Account
+
+```text
+Username: demo
+Password: Password1
+```
+
+New accounts can also be created through the game.
+
+## Final Note
+
+I have kept this repository primarily as a record of one of my first substantial programming projects.
+
+There are many things I would structure differently with the experience I have now, but the project represents an important stage in learning how to take a large idea, break it into systems, solve problems independently and turn it into a working piece of software.
